@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cole Brady Kisten - Senior Full-Stack Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="1" fill="white" opacity="0.1"/><circle cx="40" cy="80" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.025em;
+        }
+
+        .title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            opacity: 0.95;
+            margin-bottom: 24px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 24px;
+            font-size: 0.95rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 24px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #667eea;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #764ba2;
+        }
+
+        .summary-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4a5568;
+            text-align: justify;
+        }
+
+        .experience-item {
+            margin-bottom: 32px;
+            padding: 24px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #2d3748;
+        }
+
+        .company {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .location {
+            font-size: 0.95rem;
+            color: #718096;
+            font-style: italic;
+        }
+
+        .duration {
+            font-size: 0.95rem;
+            color: #718096;
+            background: #e2e8f0;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .tech-stack {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 8px 0 16px 0;
+            display: inline-block;
+        }
+
+        .job-description {
+            color: #4a5568;
+            line-height: 1.7;
+        }
+
+        .job-description ul {
+            margin: 12px 0;
+            padding-left: 20px;
+        }
+
+        .job-description li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .job-description li::marker {
+            color: #667eea;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .skill-category-title {
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: transform 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+
+        .education-item {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 24px;
+            border-radius: 12px;
+            border-left: 4px solid #764ba2;
+        }
+
+        .degree {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .university {
+            font-size: 1.1rem;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .languages {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .language-item {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 16px 24px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            transition: border-color 0.2s ease;
+        }
+
+        .language-item:hover {
+            border-color: #667eea;
+        }
+
+        .language-name {
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+
+        .language-level {
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
+        .achievements {
+            background: linear-gradient(135deg, #f0fff4 0%, #f7fafc 100%);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid #9ae6b4;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: #2d3748;
+        }
+
+        .achievement-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .achievement-icon {
+            color: #38a169;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 12px;
+            }
+            
+            .header {
+                padding: 24px 20px;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 24px 20px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .experience-item:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">Cole Brady Kisten</h1>
+                <p class="title">Senior Full-Stack Engineer</p>
+                <div class="contact-info">
+                    <div class="contact-item">📞 +27 69 487 5344</div>
+                    <div class="contact-item">✉️ xxpriv4texx@gmail.com</div>
+                    <div class="contact-item">🔗 LinkedIn: cole-brady-kisten</div>
+                    <div class="contact-item">💻 GitHub: BR0K3Nreality</div>
+                    <div class="contact-item">📍 Cape Town, Western Cape, South Africa</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <section class="section">
+                <h2 class="section-title">Professional Summary</h2>
+                <p class="summary-text">
+                    Results-driven Senior Full-Stack Engineer with <strong>4+ years</strong> of experience architecting and developing scalable web applications, mobile platforms, and community-focused technology solutions. Proven expertise in modern JavaScript ecosystems (React, Next.js, TypeScript), backend development (Golang, NestJS), and cloud infrastructure (Azure, Docker). Successfully led end-to-end development of multiple platforms including free-speech comment systems and fantasy sports applications serving users across Africa. Strong background in Mathematics and Computer Science with demonstrated ability to translate complex technical requirements into user-friendly solutions while mentoring development teams and managing cross-functional projects.
+                </p>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Professional Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">React Engineer & Flutter Engineer</h3>
+                            <p class="company">Royal Voluntary Service</p>
+                            <p class="location">Cardiff, United Kingdom (Remote)</p>
+                        </div>
+                        <span class="duration">Feb 2025 - Present</span>
+                    </div>
+                    <div class="tech-stack">TypeScript • Next.js • Golang • NestJS • Prisma • Docker • Flutter • Azure Cloud</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Architecting comprehensive volunteer management platform projected to serve <strong>10,000+ volunteers</strong></li>
+                            <li>Implementing scalable backend services improving platform performance by <strong>40%</strong></li>
+                            <li>Leveraging Azure Cloud infrastructure and Docker containerization for enhanced deployment efficiency</li>
+                            <li>Collaborating with cross-functional teams to deliver community-focused technology solutions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Senior Full-Stack Engineer</h3>
+                            <p class="company">Veriate</p>
+                            <p class="location">Iceland (Remote)</p>
+                        </div>
+                        <span class="duration">May 2024 - Feb 2025</span>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li><strong>Led end-to-end development</strong> of Speakness, a free-speech comment platform for news and media outlets</li>
+                            <li>Designed sophisticated multi-faceted comment and user rating system with advanced moderation capabilities</li>
+                            <li>Built scalable architecture supporting concurrent user loads while maintaining platform integrity</li>
+                            <li>Delivered full platform from concept to deployment within <strong>9-month timeline</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Full-Stack Developer</h3>
+                            <p class="company">FantasyGo</p>
+                            <p class="location">South Africa</p>
+                        </div>
+                        <span class="duration">Apr 2023 - Feb 2025</span>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Developed core features for daily fantasy sports platform serving users across African markets</li>
+                            <li>Implemented real-time data processing contributing to <strong>25% increase in user retention</strong></li>
+                            <li>Optimized application performance across mobile and desktop platforms</li>
+                            <li>Collaborated with product team to deliver innovative gaming experiences</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">UX/Full-Stack Developer</h3>
+                            <p class="company">Skyback Atlantic (Pty) Ltd.</p>
+                            <p class="location">Johannesburg Metropolitan Area</p>
+                        </div>
+                        <span class="duration">Feb 2021 - Jan 2023</span>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Created innovative graphics and responsive websites for diverse clientele including medical suppliers</li>
+                            <li>Applied UX design principles to improve user experience and client satisfaction rates</li>
+                            <li>Managed multiple concurrent projects meeting strict deadlines and budget requirements</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Operations Manager</h3>
+                            <p class="company">GAC Services</p>
+                            <p class="location">South Africa</p>
+                        </div>
+                        <span class="duration">Feb 2020 - Dec 2020</span>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Managed daily operations and supervised maintenance staff across multiple project sites</li>
+                            <li>Successfully oversaw comprehensive maintenance project for Kwadukuza Court facility</li>
+                            <li>Implemented operational efficiency improvements resulting in <strong>20% reduction in project completion times</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Programming Languages</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Golang</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Kotlin</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Frontend Technologies</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">React.js</span>
+                            <span class="skill-tag">Next.js</span>
+                            <span class="skill-tag">Flutter</span>
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">Responsive Design</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Backend & APIs</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">NestJS</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">RESTful APIs</span>
+                            <span class="skill-tag">GraphQL</span>
+                            <span class="skill-tag">Microservices</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Cloud & DevOps</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Azure Cloud</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">CI/CD Pipelines</span>
+                            <span class="skill-tag">Prisma ORM</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Education & Certifications</h2>
+                <div class="education-item">
+                    <h3 class="degree">Bachelor of Science in Mathematics and Computer Science</h3>
+                    <p class="university">Stellenbosch University, South Africa</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Key Achievements</h2>
+                <div class="achievements">
+                    <div class="achievement-item">
+                        <span class="achievement-icon">🚀</span>
+                        <span>Led solo development of enterprise-level comment platform with advanced moderation systems</span>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">📈</span>
+                        <span>Contributed to fantasy sports platform serving African markets with improved user retention metrics</span>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">👨‍🏫</span>
+                        <span>Successfully managed cross-functional teams and university-level teaching responsibilities</span>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">⚡</span>
+                        <span>Demonstrated expertise across full technology stack from frontend UX to cloud infrastructure</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Languages</h2>
+                <div class="languages">
+                    <div class="language-item">
+                        <div class="language-name">English</div>
+                        <div class="language-level">Native/Bilingual</div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">Afrikaans</div>
+                        <div class="language-level">Limited Working</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
